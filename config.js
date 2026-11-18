@@ -1,0 +1,21 @@
+// ÚNICO arquivo que você precisa editar. Salve e suba de novo (git push).
+window.CONFIG = {
+  nome: "Cortes GTA 6",
+  descricao: "Os melhores momentos do GTA 6 nas lives. Novos cortes todo dia!",
+
+  // Redes (deixe "" para esconder o botão)
+  tiktok: "",      // ex.: "https://www.tiktok.com/@seuperfil"
+  instagram: "",   // ex.: "https://www.instagram.com/seuperfil"
+
+  // LivePix: cole o link da sua página (ex.: "https://livepix.gg/seunome")
+  livepix: "",
+
+  // Vitrine Shopee: link de afiliado de cada produto.
+  // "imagem" pode ser um arquivo em img/ (ex.: "img/headset.jpg") ou vazio.
+  produtos: [
+    // { titulo: "Headset Gamer", preco: "R$ 89,90", imagem: "img/headset.jpg", link: "https://s.shopee.com.br/..." },
+  ],
+
+  // Link da sua loja/vitrine completa na Shopee (opcional)
+  shopee: "",
+};
