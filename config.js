@@ -1,7 +1,7 @@
 // ÚNICO arquivo que você precisa editar. Salve e suba de novo (git push).
 window.CONFIG = {
   nome: "Cortes Yato",
-  descricao: "Apoie a conta e conheça as nossas páginas parceiras.",
+  descricao: "Uma comunidade de páginas amigas que se apoiam. Conheça todas e siga as que você gostar!",
 
   // LivePix: só a página de doação
   livepix: "https://livepix.gg/cortesyato",
@@ -20,7 +20,7 @@ window.CONFIG = {
   contas: [
     {
       titulo: "Cortes",
-      descricao: "Cortes e jogadas para crescer a conta.",
+      descricao: "Os melhores momentos do futebol e dos games, feitos para você curtir.",
       tiktok: "https://www.tiktok.com/@cortes_yatoo",
       instagram: "https://www.instagram.com/cortes_yato",
     },
@@ -31,8 +31,8 @@ window.CONFIG = {
       instagram: "https://www.instagram.com/newlyricsl",
     },
     {
-      titulo: "Fofoca",
-      descricao: "Fofocas gerais e de famosos.",
+      titulo: "Entretenimento",
+      descricao: "Novidades e curiosidades do mundo dos famosos.",
       tiktok: "",
       instagram: "",
       emBreve: true,
