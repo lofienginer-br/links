@@ -27,7 +27,7 @@ body {
   transition: transform .15s;
 }
 .apoio-top:hover { transform: translateY(-2px); }
-.apoio-top:focus-visible, .botao:focus-visible, .fechar:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
+.apoio-top:focus-visible, .botao:focus-visible, .fechar:focus-visible, .rede:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
 .apoio-top .play {
   flex: none; width: 48px; height: 48px; border-radius: 50%; display: grid; place-items: center;
   background: rgba(14, 11, 20, .35); animation: pulso 2.4s ease-out infinite;
@@ -42,29 +42,15 @@ body {
 }
 @media (prefers-reduced-motion: reduce) { .apoio-top .play { animation: none; } .apoio-top, .botao { transition: none; } }
 
-.topo { text-align: center; margin-bottom: 28px; }
-.avatar {
-  width: 96px; height: 96px; margin: 0 auto 12px; border-radius: 50%;
-  display: flex; align-items: center; justify-content: center; white-space: nowrap;
-  font-weight: 900; font-size: 22px;
-  background: linear-gradient(135deg, var(--rosa), #7b2cff);
-  box-shadow: 0 0 0 4px var(--borda);
-}
-.avatar span { color: #fff; margin-left: 2px; }
-h1 { margin: 0 0 6px; font-size: 26px; }
+h1 { margin: 0 0 4px; font-size: 26px; }
 h2 { margin: 0 0 8px; font-size: 20px; }
-.topo p { margin: 0; color: var(--suave); }
-.redes { display: flex; gap: 10px; justify-content: center; margin-top: 16px; flex-wrap: wrap; }
-.redes a {
-  padding: 8px 16px; border-radius: 999px; border: 1px solid var(--borda);
-  color: var(--texto); text-decoration: none; font-weight: 600; background: var(--cartao);
-}
-.redes a:hover { border-color: var(--rosa); }
 .cartao {
   background: var(--cartao); border: 1px solid var(--borda); border-radius: 16px;
   padding: 20px; margin-bottom: 32px; text-align: center;
 }
 .cartao p { color: var(--suave); margin: 0 0 16px; }
+.cartao #descricao { margin-bottom: 18px; }
+.cartao h2 { margin-top: 4px; }
 .acoes { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
 .botao {
   display: inline-block; padding: 14px 24px; border-radius: 12px; font-weight: 800;
@@ -75,10 +61,32 @@ h2 { margin: 0 0 8px; font-size: 20px; }
 .botao.secundario { background: transparent; border: 2px solid var(--rosa); }
 #vitrine .botao.secundario { margin-top: 16px; }
 .aviso { color: var(--suave); font-size: 14px; margin-top: 12px; }
-details.qr { margin-top: 16px; color: var(--suave); }
-details.qr summary { cursor: pointer; font-weight: 600; }
-details.qr img { display: block; margin: 12px auto 0; background: #fff; padding: 8px; border-radius: 12px; width: 200px; height: 200px; }
-#vitrine { text-align: center; }
+
+/* QR só das doações, sempre visível */
+.qr { margin-top: 18px; display: flex; flex-direction: column; align-items: center; gap: 8px; color: var(--suave); font-size: 13px; }
+.qr img { background: #fff; padding: 8px; border-radius: 12px; width: 180px; height: 180px; }
+
+/* parceiros: um bloco por conta, com cor própria */
+#parceiros { margin-bottom: 32px; }
+#parceiros h2 { text-align: center; }
+#parceiros .sub { text-align: center; color: var(--suave); margin: 0 0 16px; }
+.contas { display: grid; gap: 14px; }
+.conta { background: var(--cartao); border: 1px solid var(--borda); border-left: 6px solid var(--cor, var(--rosa)); border-radius: 16px; padding: 16px 18px; }
+.conta.cor0 { --cor: #ff2d95; } .conta.cor1 { --cor: #7b2cff; } .conta.cor2 { --cor: #00c2ff; } .conta.cor3 { --cor: #ffb020; }
+.conta h3 { margin: 0 0 2px; font-size: 20px; }
+.conta .desc { margin: 0 0 12px; color: var(--suave); font-size: 15px; }
+.conta .redes { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.rede {
+  display: flex; flex-direction: column; padding: 10px 14px; border-radius: 12px; text-decoration: none; color: var(--texto);
+  background: #251d35; border: 1px solid var(--borda); line-height: 1.25; min-width: 0;
+}
+.rede:hover { border-color: var(--cor, var(--rosa)); }
+.rede strong { font-size: 15px; }
+.rede span { font-size: 13px; color: var(--suave); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.conta .embreve { margin: 0; color: var(--suave); font-weight: 600; }
+@media (max-width: 380px) { .conta .redes { grid-template-columns: 1fr; } }
+
+#vitrine { text-align: center; margin-bottom: 32px; }
 .grade { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; text-align: left; }
 .produto {
   background: var(--cartao); border: 1px solid var(--borda); border-radius: 14px;

@@ -5,17 +5,8 @@
 
   $("nome").textContent = c.nome || "";
   $("descricao").textContent = c.descricao || "";
-  document.title = (c.nome || "Links") + " — links, apoio e achados";
 
-  // Redes: só aparecem as que têm link
-  [["TikTok", c.tiktok], ["Instagram", c.instagram]].forEach(function (r) {
-    if (!r[1]) return;
-    var a = document.createElement("a");
-    a.href = r[1]; a.textContent = r[0]; a.target = "_blank"; a.rel = "noopener";
-    $("redes").appendChild(a);
-  });
-
-  // LivePix (card e janela do vídeo) + QR code
+  // LivePix (card e janela do vídeo) + QR code das doações
   if (c.livepix) {
     $("btn-livepix").href = c.livepix;
     $("m-livepix").href = c.livepix;
@@ -52,9 +43,38 @@
     dlg.addEventListener("close", function () { vid.pause(); });
   }
 
-  // Vitrine Shopee (textContent evita injetar HTML por engano)
+  // Parceiros: um bloco por conta (textContent evita injetar HTML por engano)
+  function handle(url) {
+    var m = /@([^/?#]+)|instagram\.com\/([^/?#]+)/i.exec(url || "");
+    return m ? "@" + (m[1] || m[2]) : url;
+  }
+  (c.contas || []).forEach(function (conta, i) {
+    var box = document.createElement("article");
+    box.className = "conta cor" + (i % 4);
+    var t = document.createElement("h3"); t.textContent = conta.titulo || "";
+    var d = document.createElement("p"); d.className = "desc"; d.textContent = conta.descricao || "";
+    box.appendChild(t); box.appendChild(d);
+    var redes = document.createElement("div"); redes.className = "redes";
+    [["TikTok", conta.tiktok], ["Instagram", conta.instagram]].forEach(function (r) {
+      if (!r[1]) return;
+      var a = document.createElement("a");
+      a.className = "rede"; a.href = r[1]; a.target = "_blank"; a.rel = "noopener";
+      var n = document.createElement("strong"); n.textContent = r[0];
+      var h = document.createElement("span"); h.textContent = handle(r[1]);
+      a.appendChild(n); a.appendChild(h);
+      redes.appendChild(a);
+    });
+    if (redes.children.length) box.appendChild(redes);
+    else {
+      var eb = document.createElement("p"); eb.className = "embreve"; eb.textContent = "Em breve";
+      box.appendChild(eb);
+    }
+    $("contas").appendChild(box);
+  });
+
+  // Vitrine Shopee: só aparece quando houver produtos
   var produtos = c.produtos || [];
-  if (!produtos.length) $("vitrine-vazia").hidden = false;
+  if (produtos.length) $("vitrine").hidden = false;
   produtos.forEach(function (p) {
     var a = document.createElement("a");
     a.className = "produto"; a.href = p.link; a.target = "_blank"; a.rel = "noopener sponsored";

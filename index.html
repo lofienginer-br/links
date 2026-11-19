@@ -3,10 +3,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Cortes Yato — links, apoio e achados</title>
-  <meta name="description" content="Cortes do GTA 6 das lives. Apoie a conta e veja achados gamer da Shopee.">
+  <title>Cortes Yato — apoie e conheça as páginas parceiras</title>
+  <meta name="description" content="Apoie a conta e conheça as nossas páginas parceiras no TikTok e no Instagram.">
   <meta property="og:title" content="Cortes Yato">
-  <meta property="og:description" content="Os melhores momentos do GTA 6 nas lives.">
+  <meta property="og:description" content="Apoie a conta e conheça as nossas páginas parceiras.">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -17,40 +17,39 @@
       <span class="txt"><strong>Por favor, apoie a conta</strong><small>Toque para ver o vídeo (14 s)</small></span>
     </button>
 
-    <!-- 1. Cabeçalho -->
-    <header class="topo">
-      <div class="avatar" aria-hidden="true">GTA<span>6</span></div>
-      <h1 id="nome">Cortes GTA 6</h1>
-      <p id="descricao"></p>
-      <nav class="redes" id="redes" aria-label="Redes sociais"></nav>
-    </header>
-
-    <!-- 2. Doação LivePix -->
+    <!-- 1. Doação LivePix -->
     <section class="cartao" id="apoio">
+      <h1 id="nome">Cortes Yato</h1>
+      <p id="descricao"></p>
       <h2>Apoie a conta 💖</h2>
-      <p>Gostou? Qualquer valor ajuda a manter a conta no ar. Seguir e comentar também ajuda muito!</p>
+      <p>Qualquer valor ajuda a manter as páginas no ar. Seguir e comentar também ajuda muito!</p>
       <div class="acoes">
         <a class="botao" id="btn-livepix" target="_blank" rel="noopener">Mandar um Pix (LivePix)</a>
         <a class="botao secundario" id="btn-grupo" target="_blank" rel="noopener" hidden>Entrar no grupo</a>
       </div>
       <p class="aviso" id="aviso-livepix" hidden>Em breve: link do LivePix.</p>
-      <details class="qr" id="qr-box" hidden>
-        <summary>Mostrar QR code</summary>
-        <img id="qr-img" alt="QR code da página de doação no LivePix" width="200" height="200">
-      </details>
+      <div class="qr" id="qr-box" hidden>
+        <img id="qr-img" alt="QR code da página de doação no LivePix" width="180" height="180">
+        <span>QR code das doações</span>
+      </div>
+    </section>
+
+    <!-- 2. Parceiros: cada conta em um bloco separado -->
+    <section id="parceiros">
+      <h2>Apoie nossos parceiros</h2>
+      <p class="sub">São páginas diferentes. Siga a que você gosta:</p>
+      <div class="contas" id="contas"></div>
     </section>
 
     <!-- 3. Vitrine Shopee -->
-    <section id="vitrine">
-      <h2>Achados gamer na Shopee 🎮</h2>
+    <section id="vitrine" hidden>
+      <h2>Achados na Shopee 🛒</h2>
       <div class="grade" id="grade"></div>
-      <p class="aviso" id="vitrine-vazia" hidden>Estamos escolhendo os melhores produtos. Volte em breve!</p>
       <a class="botao secundario" id="btn-shopee" target="_blank" rel="noopener sponsored" hidden>Ver mais na Shopee</a>
     </section>
 
     <footer>
       <p>Alguns links são de afiliado: se você comprar por eles, a conta recebe uma pequena comissão, sem custo extra para você.</p>
-      <p>Conteúdo de cortes com crédito aos streamers.</p>
     </footer>
   </main>
 
