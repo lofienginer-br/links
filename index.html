@@ -11,6 +11,12 @@
 </head>
 <body>
   <main class="pagina">
+    <!-- 0. Botão do vídeo (só aparece se config.videoApoio estiver preenchido) -->
+    <button type="button" class="apoio-top" id="btn-video" hidden aria-haspopup="dialog">
+      <span class="play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+      <span class="txt"><strong>Por favor, apoie a conta</strong><small>Toque para ver o vídeo (14 s)</small></span>
+    </button>
+
     <!-- 1. Cabeçalho -->
     <header class="topo">
       <div class="avatar" aria-hidden="true">GTA<span>6</span></div>
@@ -22,9 +28,16 @@
     <!-- 2. Doação LivePix -->
     <section class="cartao" id="apoio">
       <h2>Apoie a conta 💖</h2>
-      <p>Gostou dos cortes? Qualquer valor ajuda a manter a conta no ar. Seguir e comentar também ajuda muito!</p>
-      <a class="botao" id="btn-livepix" target="_blank" rel="noopener">Doar pelo LivePix</a>
+      <p>Gostou? Qualquer valor ajuda a manter a conta no ar. Seguir e comentar também ajuda muito!</p>
+      <div class="acoes">
+        <a class="botao" id="btn-livepix" target="_blank" rel="noopener">Mandar um Pix (LivePix)</a>
+        <a class="botao secundario" id="btn-grupo" target="_blank" rel="noopener" hidden>Entrar no grupo</a>
+      </div>
       <p class="aviso" id="aviso-livepix" hidden>Em breve: link do LivePix.</p>
+      <details class="qr" id="qr-box" hidden>
+        <summary>Mostrar QR code</summary>
+        <img id="qr-img" alt="QR code da página de doação no LivePix" width="200" height="200">
+      </details>
     </section>
 
     <!-- 3. Vitrine Shopee -->
@@ -40,6 +53,19 @@
       <p>Conteúdo de cortes com crédito aos streamers.</p>
     </footer>
   </main>
+
+  <!-- Janela do vídeo -->
+  <dialog id="modal-video" aria-label="Vídeo: por favor, apoie a conta">
+    <div class="modal-in">
+      <button type="button" class="fechar" id="fechar" aria-label="Fechar o vídeo">&times;</button>
+      <video id="vid" playsinline controls preload="none"></video>
+      <div class="acoes">
+        <a class="botao" id="m-livepix" target="_blank" rel="noopener">Mandar um Pix</a>
+        <a class="botao secundario" id="m-grupo" target="_blank" rel="noopener" hidden>Entrar no grupo</a>
+      </div>
+    </div>
+  </dialog>
+
   <script src="config.js"></script>
   <script src="app.js"></script>
 </body>

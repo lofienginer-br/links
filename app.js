@@ -15,12 +15,41 @@
     $("redes").appendChild(a);
   });
 
-  // LivePix
+  // LivePix (card e janela do vídeo) + QR code
   if (c.livepix) {
     $("btn-livepix").href = c.livepix;
+    $("m-livepix").href = c.livepix;
+    if (c.qr) { $("qr-img").src = c.qr; $("qr-box").hidden = false; }
   } else {
     $("btn-livepix").hidden = true;
+    $("m-livepix").hidden = true;
     $("aviso-livepix").hidden = false;
+  }
+
+  // Grupo: só aparece se tiver convite no config
+  if (c.grupo) {
+    $("btn-grupo").href = c.grupo; $("btn-grupo").hidden = false;
+    $("m-grupo").href = c.grupo; $("m-grupo").hidden = false;
+  }
+
+  // Vídeo do topo: o arquivo só é baixado quando a pessoa clica
+  var dlg = $("modal-video"), vid = $("vid");
+  if (c.videoApoio && dlg && typeof dlg.showModal === "function") {
+    var fechar = function () { vid.pause(); dlg.close(); };
+    $("btn-video").hidden = false;
+    $("btn-video").addEventListener("click", function () {
+      if (!vid.getAttribute("src")) {
+        vid.src = c.videoApoio;
+        if (c.videoPoster) vid.poster = c.videoPoster;
+      }
+      dlg.showModal();
+      vid.currentTime = 0;
+      var p = vid.play();
+      if (p && p.catch) p.catch(function () {});
+    });
+    $("fechar").addEventListener("click", fechar);
+    dlg.addEventListener("click", function (e) { if (e.target === dlg) fechar(); });
+    dlg.addEventListener("close", function () { vid.pause(); });
   }
 
   // Vitrine Shopee (textContent evita injetar HTML por engano)
